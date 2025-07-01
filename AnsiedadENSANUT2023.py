@@ -14,7 +14,7 @@ st.markdown("Explora las diferencias en la frecuencia de ansiedad entre hombres 
 # --- CARGAR DATOS DESDE GITHUB ---
 @st.cache_data
 def cargar_datos_desde_github():
-    url = "https://raw.githubusercontent.com/TU_USUARIO/TU_REPOSITORIO/main/ejercicio%20analisis%20de%20datos_modificada.csv"
+    url = "https://raw.githubusercontent.com/Mexaddon/ENSANUTans_2023-2024/main/ejercicio%20analisis%20de%20datos_modificada.csv"
     df = pd.read_csv(url)
     df.columns = df.columns.str.strip()
     df = df.dropna(subset=['Género', 'Ansiedad_frecuencia'])
