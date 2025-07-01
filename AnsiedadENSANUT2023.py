@@ -33,6 +33,18 @@ elif genero == 'Mujer':
 else:
     df_filtrado = df.copy()
 
+# --- TABLA DE FRECUENCIAS (si es Hombre o Mujer) ---
+if genero != 'Ambos':  # 👈 NUEVO
+    st.subheader("📋 Tabla de frecuencias de ansiedad")  # 👈 NUEVO
+    niveles = {  # 👈 NUEVO
+        0: 'Nunca',
+        2: 'Mensual o múltiples veces',
+        1: 'Semanal o diario'
+    }
+    frecuencia = df_filtrado['Ansiedad_frecuencia'].map(niveles).value_counts().rename_axis("Frecuencia de Ansiedad").reset_index(name="Conteo")  # 👈 NUEVO
+    frecuencia["Porcentaje"] = (frecuencia["Conteo"] / frecuencia["Conteo"].sum() * 100).round(2)  # 👈 NUEVO
+    st.dataframe(frecuencia)  # 👈 NUEVO
+
 # --- GRÁFICO DE BARRAS: PROMEDIO DE ANSIEDAD POR GÉNERO ---
 st.subheader("📊 Promedio de frecuencia de ansiedad por género")
 
